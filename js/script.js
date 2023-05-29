@@ -4,9 +4,11 @@ console.log('JS OK')
 // Variabili nel form 
 const userName = document.getElementById('userName');
 const age = document.getElementById('age');
+const button = document.getElementById('button')
 
 
 // Variabili nella table
+const table = document.getElementById('table')
 const passengerName = document.getElementById('passengerName')
 const offer = document.getElementById('offer')
 const cab = document.getElementById('cab');
@@ -15,38 +17,46 @@ const ticketCost = document.getElementById('ticketCost');
 
 // Variabili per calcolare il costo del biglietto
 const yourAge = document.getElementById('age');
-const kmSelected = parseInt(document.getElementById('kmSelected').value);
 const pricePerKm = 0.21;
-// const under18 = 18;
-// const over65 = 65;
-const discount = null;
 let errorMessage = 'Inserisci il numero di km da effettuare!'
 
 console.log(pricePerKm)
 
 let finalPrice = null;
 
-// Quì mettiamo il nome e cognome dell'utente nella tabella di acquisto del biglietto
-if (userName.value !== '') passengerName.innerText = userName.value;
+button.addEventListener('click', function(){
+    // Il numero di km selezionati l'ho messi all'interno del addEventListener perché altrimenti non avremmo potuto aggiornare il prezzo del biglietto ad ogni click in caso di cambio di km
+    const kmSelected = parseInt(document.getElementById('kmSelected').value);
 
-// Quì printiamo nella tabella il tipo di offerta applicata 
-if (age.value === 'minorenne') {
-    offer.innerText = 'Under 18'
-} else if (age.value === 'over65') {
-    offer.innerText = 'Over 65'
-} else {
-    offer.innerText = 'Standard'
-}
+    if (userName.value === '' || isNaN(kmSelected) || kmSelected <= 0) {
+        alert('Inserisci dei dati validi')
+    } else {
+        table.className = 'd-table';
+        // Quì mettiamo il nome e cognome dell'utente nella tabella di acquisto del biglietto
+        if (userName.value !== '') passengerName.innerText = userName.value;
+        
+        // Quì printiamo nella tabella il tipo di offerta applicata 
+        if (age.value === 'minorenne') {
+            offer.innerText = 'Under 18'
+        } else if (age.value === 'over65') {
+            offer.innerText = 'Over 65'
+        } else {
+            offer.innerText = 'Standard'
+        }
+        
+        // Qui printiamo il costo del biglietto
+        finalPrice = kmSelected * pricePerKm;
+        if (age.value === 'minorenne') {
+            finalPrice *= 0.8; //Sconto 20%
+        } else if (age.value === 'over65') {
+            finalPrice *= 0.6;  //Sconto 40%
+        }
+        ticketCost.innerText = finalPrice.toFixed(2) + '€';
+        console.log(userName.value, kmSelected, finalPrice)
 
-// Qui printiamo il costo del biglietto
-finalPrice = kmSelected * pricePerKm;
-if (age.value === 'minorenne') {
-    finalPrice *= 0.8; //Sconto 20%
-} else if (age.value === 'over65') {
-    finalPrice *= 0.6;  //Sconto 40%
-}
-ticketCost.innerText = finalPrice.toFixed(2) + '€';
-console.log(userName.value, kmSelected, finalPrice)
+    }
+
+})
 
 
 
