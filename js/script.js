@@ -12,7 +12,7 @@ const table = document.getElementById('table')
 const passengerName = document.getElementById('passengerName')
 const offer = document.getElementById('offer')
 const cab = document.getElementById('cab');
-const ticketNumber = document.getElementById('ticketNumber');
+const ticketNumberPlaceholder = document.getElementById('ticketNumber');
 const ticketCost = document.getElementById('ticketCost');
 
 // Variabili per calcolare il costo del biglietto
@@ -52,6 +52,22 @@ button.addEventListener('click', function(){
             finalPrice *= 0.6;  //Sconto 40%
         }
         ticketCost.innerText = finalPrice.toFixed(2) + '€';
+        
+
+
+        random = Math.random();
+        // Quì generiamo il numero della carrozza 
+        let maxCab = 5;
+        const cabNumber = Math.floor(random * maxCab) + 1;
+        cab.innerText = cabNumber;
+
+
+        // Quì generiamo il numero del biglietto
+        let min = 10000;
+        let max = 99999;
+        const ticketNumber = Math.floor(random * (max + 1 - min)) + min;
+        ticketNumberPlaceholder.innerText = ticketNumber;
+        
         console.log(userName.value, kmSelected, finalPrice)
 
     }
