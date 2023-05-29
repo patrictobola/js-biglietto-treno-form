@@ -1,23 +1,17 @@
-# Calcolo presso del biglietto
+Chiedo scusa per non aver fatto il markdown dall'inizio. Ho aperto il codice di venerdì cercando di capire al meglio come modificare il tutto e riadattarlo, per poi scrivere il markdown, però in fase di analisi sono stato preso da un incredibile voglia di rifare tutto da capo cercando di ridurre un pochino il codice e talmente preso dalla cosa mi sono ricordato di scrivere il markdown quasi a metà esercizio. Perdonatemi.
 
-- Scegliere dove fare l'output del prezzo, in questo caso all'interno della pagina html
-- Definire le costanti all'interno del codice
-  - variabile con il costo al km
-  - sconto del 20% under 18
-  - sconto del 40% over 65
-- creare prompt dove chiediamo all'utente il numero di km da percorrere e inseriamo il risultato in una variabile
-- creare prompt dove chiediamo all'utente la sua età e inseriamo il risultato in una variabile
-- moltiplichiamo il prezzo al km per il numero di km impostati dall'utente
-- verifichiamo se l'età dell'utente rientra nelle età in cui lo sconto è applicabile
-- inseriamo il risultato all'interno dell'elemento in pagina precedentemente selezionato.
+# Form per acquistare il biglietto
 
-# Oltre a ciò che è stato richiesto ho:
-
-- fatto una basic page
-- ho messo una favicon :)
-- ho validato il js in modo che non faccia nulla se non vengono rispettati dei valori veri come:
-  - I km devono essere espressi in numeri e non possono essere uguali o inferiori a 0
-  - L'età deve essere un numero compreso tra 1 e 150, altri valori come 0, negativi o superiori a 150 sono considerati nulli. Stesso discorso per valori che sono uguali ad una stringa e non un numero.
-- una volta appurati che i valori sono reali, indichiamo il prezzo del biglietto.
-  - se il biglietto è soggetto ad uno sconto, viene indicato il nuovo prezzo, la percentuale di sconto e la differenza dal prezzo originale
-- Se mi verrà in mente altro in questi giorni lo aggiungerò :)
+- Dopo un attenta analisi e dopo aver notato un po' di confusione ho deciso di commentare tutto e ricominciare da capo.
+- Sono partito da input e button semplicissimi
+- Dopo aver analizzato l'immagine che ci è stata data in assegnazione ho stabilito che il biglietto fosse una tabella quindi
+  - 1.  ho creato una tabella
+  - 2.  ho lasciato tutti gli elementi nel tbody vuoti per potergli riempire con JS
+- Creata la tabella da JS ho creato variabili con tutti gli elementi del DOM che ritenevo necessari
+- Ho gradualmente fatto in modo che i dati inseriti dall'utente apparissero nella tabella
+- Dopo aver controllato che tutto funzionasse, ho aggiunto addEventListener al button per fare in modo che fosse il bottone ad inserire i dati nella tabella
+- Ho fatto partire la tabella da display none e una volta cliccato il button di acquisto la tabella diventa display table
+- Mi sono fatto un buon caffè perché ci voleva proprio!! :)
+- Ho impostato il tasto reset per fare in modo che al suo click svuotasse il value degli input
+- Ho aggiunto delle validazioni al form per fare in modo che la tabella appare solo se i dati inseriti dall'utente sono validi
+- Con poca fantasia ho 'stilizzato' il form e la tabella in modo da renderlo parzialmente decente :)
