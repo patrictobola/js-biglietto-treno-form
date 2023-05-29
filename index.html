@@ -45,59 +45,59 @@
                 <p class="text-white-50 mb-0">Ricordati di pagare, furbetto!</p>
             </div>
         </section>
-        <!-- Content section-->
-        <!-- <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <p id="yourAge" class="mb-0"></p>
-                        <p id="kmSelected" class="mb-2"></p>
-                        <h2 id="ticketPrice"></h2>
-                        <p id="priceDiscount" class="lead"></p>
+        <!-- Form content section -->
+        <section class="py-5">
+            <!-- Form per l'acquisto del biglietto  -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="userName">Nome e cognome</label>
+                        <input class="form-control" id="userName" type="text" placeholder="es. Mario Rossi">
+                    </div>
+                    <div class="col-6">
+                        <label for="kmSelected">Km da percorrere</label>
+                        <input class="form-control" id="kmSelected" type="number" placeholder="es. 100">
+                    </div>
+                    <div class="col-6 mb-4">
+                        <label for="age">Età</label>
+                        <select class="form-control" name="age" id="age">
+                            <option value="minorenne">Minorenne</option>
+                            <option value="maggiorenne" selected>Maggiorenne</option>
+                            <option value="over65">Over 65</option>
+                        </select>
                     </div>
                 </div>
+                <button id="buyButton" type="button" class="btn btn-primary">Acquista il biglietto</button>
+                <button id="resetButton" type="button" class="btn btn-warning">Reset</button>
             </div>
-        </section> -->
-        <!-- Form content section -->
-        <section>
-            <div>
-                <label for="userName">Nome e cognome</label>
-                <input id="userName" type="text">
-                <label for="kmSelected">Km da percorrere</label>
-                <input id="kmSelected" type="number" value="100">
-                <label for="age">Età</label>
-                <select name="age" id="age">
-                    <option value="">--Scegliere un opzione--</option>
-                    <option value="minorenne">Minorenne</option>
-                    <option value="maggiorenne">Maggiorenne</option>
-                    <option value="over65">Over 65</option>
-                </select>
-                <button id="button" type="button">Acquista il biglietto</button>
-                <button type="button">Annulla</button>
-            </div>
-            <div id="table" class="d-none">
-                <h2>DETTAGLIO PASSEGGERI</h2>
-                <table>
-                    <thead>
-                        <tr>
+            <div id="table" class="d-none container mt-3">
+                <div class="row">
+                    <div class="col-12 ">
+                        <h2>DETTAGLIO PASSEGGERI</h2>
+                        <!-- Tabella per il biglietto  -->
+                        <table class="table table-dark">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Nome Passeggero</th>
+                                    <th scope="col">Offerta</th>
+                                    <th scope="col">Carrozza</th>
+                                    <th scope="col">Codice biglietto</th>
+                                    <th scope="col">Costo biglietto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="passengerName"></td>
+                                    <td id="offer"></td>
+                                    <td id="cab"></td>
+                                    <td id="ticketNumber"></td>
+                                    <td id="ticketCost"></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <th>Nome Passeggero</th>
-                            <th>Offerta</th>
-                            <th>Carrozza</th>
-                            <th>Codice biglietto</th>
-                            <th>Costo biglietto</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td id="passengerName"></td>
-                            <td id="offer"></td>
-                            <td id="cab"></td>
-                            <td id="ticketNumber"></td>
-                            <td id="ticketCost"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

@@ -4,7 +4,8 @@ console.log('JS OK')
 // Variabili nel form 
 const userName = document.getElementById('userName');
 const age = document.getElementById('age');
-const button = document.getElementById('button')
+const buyButton = document.getElementById('buyButton')
+const resetButton = document.getElementById('resetButton')
 
 
 // Variabili nella table
@@ -18,20 +19,36 @@ const ticketCost = document.getElementById('ticketCost');
 // Variabili per calcolare il costo del biglietto
 const yourAge = document.getElementById('age');
 const pricePerKm = 0.21;
-let errorMessage = 'Inserisci il numero di km da effettuare!'
 
 console.log(pricePerKm)
 
 let finalPrice = null;
+// Per resettare i valori negli input 
+resetButton.addEventListener('click', function(){
+    userName.value = '';
+    kmSelected.value = '';
+    age.value = 'maggiorenne'
+    table.classList.add('d-none');
+    table.classList.remove('d-table');
+})
 
-button.addEventListener('click', function(){
+
+
+// Per stampare il biglietto 
+buyButton.addEventListener('click', function(){
+
     // Il numero di km selezionati l'ho messi all'interno del addEventListener perché altrimenti non avremmo potuto aggiornare il prezzo del biglietto ad ogni click in caso di cambio di km
     const kmSelected = parseInt(document.getElementById('kmSelected').value);
 
-    if (userName.value === '' || isNaN(kmSelected) || kmSelected <= 0) {
-        alert('Inserisci dei dati validi')
+    if (userName.value === '')  {
+        alert('Inserisci un nome valido')
+    } else if (isNaN(kmSelected) || kmSelected <= 0) {
+        alert('Inserisci un kilometraggio valido')
     } else {
-        table.className = 'd-table';
+        // Facciamo apparire la tabella con il biglietto 
+        table.classList.add('d-table');
+        table.classList.remove('d-none');
+
         // Quì mettiamo il nome e cognome dell'utente nella tabella di acquisto del biglietto
         if (userName.value !== '') passengerName.innerText = userName.value;
         
@@ -73,46 +90,3 @@ button.addEventListener('click', function(){
     }
 
 })
-
-
-
-
-
-// // Calcoliamo il prezzo al km 
-// let finalPrice = 0;
-// if (isNaN(kms) || kms <= 0) {
-//     alert(errorMessage);
-// }   else {
-//     const age = parseInt(prompt(`Quanti anni hai?`, 20).trim());
-//     // Verifichiamo che l'utente ha messo un'età plausibile 
-//     if (isNaN(age) || (age <= 0 || age >= 150)) {
-//         alert(errorMessage = `Inserisci un'età valida, pls!`)
-//     }   else {
-
-//         finalPrice = kms * pricePerKm;
-
-//         // Vediamo se possiamo applicare o meno uno sconto e informiamo l'utente di un eventuale sconto
-//         if ((age > over65) && !(age >= 150)) {
-//             discountApplied.innerText = 
-//             `Il prezzo del biglietto era di: ${finalPrice.toFixed(2)}€
-//             Abbiamo applicato uno sconto del ${discount65}%
-//             Pari a: ${(finalPrice * discount65 / 100).toFixed(2)}€`;
-        
-//             finalPrice = finalPrice - (finalPrice * discount65 / 100);
-//         }   else if ((age < under18) && !(age <= 0)) {
-//             discountApplied.innerText = 
-//             `Il prezzo del biglietto era di: ${finalPrice.toFixed(2)}€
-//             Abbiamo applicato uno sconto del ${discount18}%
-//             Pari a: ${(finalPrice * discount18 / 100).toFixed(2)}€`;
-        
-//             finalPrice = finalPrice - (finalPrice * discount18 / 100);
-//         }
-        
-//         ticketPlaceholder.innerText = `Il prezzo del tuo biglietto è: ${finalPrice.toFixed(2)}€`
-//         yourAge.innerText = `Hai ${age} anni!`;
-//         kmSelected.innerText = `Hai selezionato ${kms} kilometri.`
-        
-        
-//         console.log(finalPrice, age, kms)
-//     }
-// }
