@@ -12,94 +12,101 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css'
         integrity='sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=='
         crossorigin='anonymous' />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Acquista il tuo biglietto</title>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">Trenitalia (magari!)</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Treni</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <section id="jumbotron" class="py-5 bg-image-full">
-            <div class="text-center my-5">
-                <img class="img-fluid w-25 rounded-circle mb-4"
-                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80"
-                    alt="Tizio a caso" />
-                <h1 class="text-white fs-3 fw-bolder">Hai quasi acquistato il tuo biglietto!</h1>
-                <p class="text-white-50 mb-0">Ricordati di pagare, furbetto!</p>
-            </div>
-        </section>
-        <!-- Form content section -->
-        <section class="py-5">
-            <!-- Form per l'acquisto del biglietto  -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <label for="userName">Nome e cognome</label>
-                        <input class="form-control" id="userName" type="text" placeholder="es. Mario Rossi">
-                    </div>
-                    <div class="col-6">
-                        <label for="kmSelected">Km da percorrere</label>
-                        <input class="form-control" id="kmSelected" type="number" placeholder="es. 100">
-                    </div>
-                    <div class="col-6 mb-4">
-                        <label for="age">Età</label>
-                        <select class="form-control" name="age" id="age">
-                            <option value="minorenne">Minorenne</option>
-                            <option value="maggiorenne" selected>Maggiorenne</option>
-                            <option value="over65">Over 65</option>
-                        </select>
-                    </div>
-                </div>
-                <button id="buyButton" type="button" class="btn btn-primary">Acquista il biglietto</button>
-                <button id="resetButton" type="button" class="btn btn-warning">Reset</button>
-            </div>
-            <div id="table" class="d-none container mt-3">
-                <div class="row">
-                    <div class="col-12 ">
-                        <h2>DETTAGLIO PASSEGGERI</h2>
-                        <!-- Tabella per il biglietto  -->
-                        <table class="table table-dark">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Nome Passeggero</th>
-                                    <th scope="col">Offerta</th>
-                                    <th scope="col">Carrozza</th>
-                                    <th scope="col">Codice biglietto</th>
-                                    <th scope="col">Costo biglietto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="passengerName"></td>
-                                    <td id="offer"></td>
-                                    <td id="cab"></td>
-                                    <td id="ticketNumber"></td>
-                                    <td id="ticketCost"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <div id="app">
 
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#!">Trenitalia (magari!)</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Treni</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </section>
+            </nav>
+        </header>
+        <main>
+            <section id="jumbotron" class="py-5 bg-image-full">
+                <div class="text-center my-5">
+                    <img class="img-fluid w-25 rounded-circle mb-4"
+                        src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80"
+                        alt="Tizio a caso" />
+                    <h1 class="text-white fs-3 fw-bolder">Hai quasi acquistato il tuo biglietto!</h1>
+                    <p class="text-white-50 mb-0">Ricordati di pagare, furbetto!</p>
+                </div>
+            </section>
+            <!-- Form content section -->
+            <section class="py-5">
+                <!-- Form per l'acquisto del biglietto  -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="userName">Nome e cognome</label>
+                            <input class="form-control" id="userName" v-model="name" type="text"
+                                placeholder="es. Mario Rossi">
+                        </div>
+                        <div class="col-6">
+                            <label for="kmSelected">Km da percorrere</label>
+                            <input class="form-control" id="kmSelected" v-model="kmSelected" type="number"
+                                placeholder="es. 100">
+                        </div>
+                        <div class="col-6 mb-4">
+                            <label for="age">Età</label>
+                            <select class="form-control" v-model="age" name="age" id="age">
+                                <option value="minorenne">Minorenne</option>
+                                <option value="maggiorenne" selected>Maggiorenne</option>
+                                <option value="over65">Over 65</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="buyButton" type="button" class="btn btn-primary" @click="buyTicket">Acquista il
+                        biglietto</button>
+                    <button id="resetButton" type="button" class="btn btn-warning" @click="resetForm">Reset</button>
+                </div>
+                <div id="table" :class='display' class="container mt-3">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <h2>DETTAGLIO PASSEGGERI</h2>
+                            <!-- Tabella per il biglietto  -->
+                            <table class="table table-dark">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Nome Passeggero</th>
+                                        <th scope="col">Offerta</th>
+                                        <th scope="col">Carrozza</th>
+                                        <th scope="col">Codice biglietto</th>
+                                        <th scope="col">Costo biglietto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="passengerName">{{ name }}</td>
+                                        <td id="offer">{{ offer }}</td>
+                                        <td id="cab">{{ cab }}</td>
+                                        <td id="ticketNumber">{{ ticketNumber }}</td>
+                                        <td id="ticketCost">{{ finalPrice }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
     </main>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
@@ -111,7 +118,8 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/vue.js"></script>
 </body>
 
 </html>
